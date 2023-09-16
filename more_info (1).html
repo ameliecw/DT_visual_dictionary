@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block pageheading %}More Info{% endblock %}
+{% block main %}
+<div class="text", id="more_info">
+  <p>View more detailed information on this specific word for teachers only.</p>
+  <p>This also allows you to modify information associated with this word without having to visit the admin page.</p>
+  <form class="button" action="/words/1">
+    <input type="submit" value="Return to the translations page"></input>
+  </form>
+  <form class="button" action="/admin">
+    <input type="submit" value="Go to the admin page"></input>
+  </form>
+</div>
+<div class="flex-container">
+  
+  <div class="flex-child info", id="more_info">
+    <h3>Word information</h3>
+    <br>
+    <p><strong>Word number:</strong> {{ word }} out of {{ max_id }}</p>
+    <p><strong>English:</strong> {{ word_info[1] }}</p>
+    <p><strong>Maori:</strong> {{ word_info[2] }}</p>
+    <p><strong>Level:</strong> {{ word_info[7] }}</p>
+    <p><strong>Description:</strong> {{ word_info[3] }}</p>
+    <p><strong>Category:</strong> {{ cat }}</p>
+    <p><strong>Added by user:</strong> {{ user }}</p>
+    <p><strong>Last modified:</strong> {{ word_info[9] }}</p>
+    <br>
+    <h3>Image information</h3>
+    <p><strong>Image file:</strong> {{ word_info[6] }}</p>
+    <p><strong>Alt text:</strong> {{ word_info[8] }}</p>
+  </div>
+  
+  <div class="flex-child modify", id="more_info">
+    <h3>Modify information</h3>
+    <h4>Individual changes for this word</h4>
+    <form class="myform" method="post" action="/delete">
+      <div class ="form-group">
+        <div class ="form-label"><label for="word_id">Delete this word:</label></div>
+        <div class ="form-element">
+          <select id="word_id" name="word_id" >
+            <option value ="{{ word_info[0] }}">{{ word_info[1] }}</option>
+          </select>
+        </div>
+      </div>
+      <div class ="form-group">
+        <div class ="form-label"></div>
+        <div class ="form-element"><input type="submit" value ="Delete Word"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_english/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="english">English Word:</label></div>
+        <div class="form-element"><input type="text" name="english" id="english"></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update English for this word"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_maori/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="maori">Maori Word:</label></div>
+        <div class="form-element"><input type="text" name="maori" id="maori"></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update English for this word"></div>
+      </div>
+    </form>
+  </div>
+
+  <div class="flex-child img", id="more_info">
+    <h3>Current image being displayed:</h3>
+    <img src="/static/images/{{ word_info[6] }}.jpg" alt="alt text"/>
+  </div>
+    
+</div>
+{% endblock %}
