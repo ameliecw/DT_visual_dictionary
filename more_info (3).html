@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block pageheading %}More Info{% endblock %}
+{% block main %}
+
+<div class="text", id="more_info">
+  <p>View more detailed information on this specific word for teachers only.</p>
+  <p>This also allows you to modify information associated with this word without having to visit the admin page.</p>
+  <form class="button" action="/words/1">
+    <input type="submit" value="Return to the translations page"></input>
+  </form>
+  <form class="button" action="/admin">
+    <input type="submit" value="Go to the admin page"></input>
+  </form>
+</div>
+
+<div class="flex-container">
+  <div class="flex-child info", id="more_info">
+    <h3>Word information</h3>
+    <br>
+    <p><strong>Word number:</strong> {{ word }} out of {{ max_id }}</p>
+    <p><strong>English:</strong> {{ word_info[1].title() }}</p>
+    <p><strong>Maori:</strong> {{ word_info[2].title() }}</p>
+    <p><strong>Level:</strong> {{ word_info[7] }}</p>
+    <p><strong>Description:</strong> {{ word_info[3].capitalize() }}</p>
+    <p><strong>Category:</strong> {{ cat }}</p>
+    <p><strong>Added by user:</strong> {{ user }}</p>
+    {% if last_updated != None %}
+    <p><strong>Date added:</strong> {{ last_updated }}</p>
+    {% else %}
+    <p><strong>Date added:</strong> {{ word_info[9] }}</p>
+    {% endif %}
+    <br>
+    <h3>Image information</h3>
+    <p><strong>Image file:</strong> {{ word_info[6] }}</p>
+    <p><strong>Alt text:</strong> {{ word_info[8] }}</p>
+  </div>
+  
+  <div class="flex-child modify", id="more_info">
+    <h3>Modify information</h3>
+    <h4>Individual changes for this word</h4>
+    <form class="myform" method="post" action="/delete">
+      <div class ="form-group">
+        <div class ="form-label"><label for="word_id">Delete this word:</label></div>
+        <div class ="form-element">
+          <select id="word_id" name="word_id" >
+            <option value ="{{ word_info[0] }}">{{ word_info[1] }}</option>
+          </select>
+        </div>
+      </div>
+      <div class ="form-group">
+        <div class ="form-label"></div>
+        <div class ="form-element"><input type="submit" value ="Delete Word"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_english/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="english">English Word:</label></div>
+        <div class="form-element"><input type="text" name="english" id="english" maxlength=80></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update English"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_maori/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="maori">Maori Word:</label></div>
+        <div class="form-element"><input type="text" name="maori" id="maori" maxlength=80></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update Maori"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_description/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="description">Description:</label></div>
+        <div class="form-element"><input type="text" name="description" id="description" maxlength=80></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update description"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_level/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="level">Level:</label></div>
+        <div class="form-element"><input type="number" name="level" id="level" min=1 max=10></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update level"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_alt_text/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="alt_text">Alt text:</label></div>
+        <div class="form-element"><input type="text" name="alt_text" id="alt_text" maxlength=100></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update alt text"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_image/{{ word_info[0] }}">
+      <div class="form-group">
+        <div class="form-label"><label for="image">Image:</label></div>
+        <div class="form-element"><input type="text" name="image" id="image" maxlength=100></div>
+      </div>
+      <div class="form-group">
+        <div class="form-label"></div>
+        <div class="form-element"><input type="submit" value="Update image"></div>
+      </div>
+    </form>
+    <br>
+    <form class="myform" method="post" action="/modify_category/{{ word_info[0] }}">
+      <div class ="form-group">
+        <div class ="form-label"><label for="category">Change category of this word:</label></div>
+        <div class ="form-element">
+          <select id="category" name="category">
+            {% for category in categories %}
+              <option value ="{{ category[0] }}">{{ category[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class ="form-group">
+        <div class ="form-label"></div>
+        <div class ="form-element"><input type="submit" value ="Change category"></div>
+      </div>
+    </form>
+  </div>
+
+  <div class="flex-child img", id="more_info">
+    <h3>Current image being displayed:</h3>
+    <img src="/static/images/{{ word_info[6] }}.jpg" alt="{{ word_info[8] }}"/>
+  </div>
+    
+</div>
+{% endblock %}
