@@ -1,0 +1,549 @@
+* {
+    font-family: Comfortaa, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+	font-family: Arial, Verdana, sans-serif;
+	background-color: #C1AAAA;
+	text-align: left;
+	width: 80vw;
+	margin: 0 auto 0 auto;
+}
+
+header h1{
+	color: #000;
+	font-size: 3em;
+	font-family: 'Georgia', serif;
+}
+
+.nav {
+  overflow: hidden;
+  background-color: #5B2C2C;
+  grid-area: nav;
+  top: 0;
+  position: sticky;
+}
+
+.nav a {
+  float: left;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav a:hover {
+  background-color: #733737;
+  color: #fff;
+}
+
+.nav a:active {
+  background-color: #5d3233;
+  color: white;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 75px auto;
+  grid-template-areas: 'header header' 'nav nav' 'main main' 'footer footer';
+}
+
+header {
+  grid-area: header;
+  background-color: #D30C0C;
+  padding: 2rem;
+}
+
+main {
+  grid-area: main;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+h2, h3, h4 {
+  padding: 1rem 0;
+  font-family: 'Georgia', serif;
+  color: #000;
+}
+
+p {
+  padding: 0.5rem 0;
+}
+
+a {
+  color: #222;
+}
+
+/*changing colour of links for yes and no
+#delete_confirm.a {
+  border-style: solid;
+  border-color: green;
+}
+
+#no.a {
+  border-style: solid;
+  border-color: red;
+}*/
+#top_of_page.text {
+  background-color: #C1AAAA;
+  width: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img {
+   width: 100%;
+}
+
+.button {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-element input[type="submit"] {
+  border: 2px solid #000;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.myform input[type="submit"] {
+  border: 2px solid #000;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.button input[type="submit"] {
+  border: 2px solid #000;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.form-label {
+  padding: 2px;
+}
+
+.input {
+  border: 4px solid #000;
+}
+
+/* basic container for text boxes*/
+.text {
+  background-color: #C1AAAA;
+  padding: 10px;
+  text-align: center;
+  width: auto;
+  overflow-wrap: break-word;
+}
+
+#login.text {
+  text-align: left;
+  max-width: auto;
+  max-width: 30%;
+}
+
+#words.text {
+  background-color: #87a571;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+#info.text{
+  text-align: center;
+}
+
+#my_form{
+  padding: 50px;
+}
+
+.category_menu{
+  text-align: center;
+}
+
+.more_info{
+  background-color: #C1AAAA;
+  padding: 10px;
+  text-align: left;
+  width: auto;
+}
+
+.dataForm {
+    margin: 1rem 0;
+    border: 1px solid #999;
+    padding: 1rem;
+    background-color: #fcc;
+    border-radius: 10px;
+}
+
+.dataForm input, textarea {
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.3rem;
+    margin-bottom: 10px;
+}
+
+.dataForm p input {
+    display: inline;
+    width: 1rem;
+    margin-left: 0.5rem;
+}
+
+.error {
+    color: #f00;
+}
+
+.login {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px dashed #fff;
+}
+
+table {
+    width: 100%;
+    border: 2px solid #666;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #888;
+    padding: 0.2rem;
+    text-align: left;
+}
+th {
+    background-color: #000;
+    color: #fff;
+}
+
+img .thumb {
+    max-width: 90px;
+}
+
+footer {
+    grid-area: footer;
+    padding: 10px;
+    background-color: #5B2C2C;
+}
+
+footer p {
+    color: #fff;
+}
+
+footer img {
+    float: right;
+}
+
+/*responsive screen layout*/
+@media only screen and (max-width: 768px) {
+    nav
+    {
+      display: block;
+      position: relative;
+      z-index: 1;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    nav a
+    {
+      text-decoration: none;
+      color: #232323;
+      transition: color 0.3s ease;
+    }
+
+
+    nav input
+    {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+
+      cursor: pointer;
+
+      opacity: 0;
+      z-index: 2;
+
+      -webkit-touch-callout: none;
+    }
+
+    nav span
+    {
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+
+      background: #000;
+      border-radius: 3px;
+
+      z-index: 1;
+
+      transform-origin: 4px 0px;
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease;
+    }
+
+    nav span:first-child
+    {
+      transform-origin: 0% 0%;
+    }
+
+    nav span:nth-last-child(2)
+    {
+      transform-origin: 0% 100%;
+    }
+
+    nav input:checked ~ span
+    {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+      background: #000;
+    }
+
+    nav input:checked ~ span:nth-last-child(3)
+    {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    nav input:checked ~ span:nth-last-child(2)
+    {
+      transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    nav ul
+    {
+      position: absolute;
+      width: 300px;
+      margin: -100px 0 0 -50px;
+      padding: 50px;
+      padding-top: 125px;
+
+      background: #ed9999;
+      list-style-type: none;
+      -webkit-font-smoothing: antialiased;
+      /* to stop flickering of text in safari */
+
+      transform-origin: 0% 0%;
+      transform: translate(-100%, 0);
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+
+    nav ul li
+    {
+      padding: 5px 0;
+    }
+
+    nav input:checked ~ ul
+    {
+      transform: none;
+    }
+}
+
+/*responsive screen layout*/
+@media only screen and (min-width: 768px) {
+    #container {
+        grid-template-columns: 180px auto;
+        grid-template-areas: 'header header' 'nav main' 'footer footer';
+    }
+
+    nav input, nav span {
+        visibility: hidden;
+    }
+
+    html {
+        background-image: url('images/poutama.jpg');
+    }
+
+    .formRow {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin: 0.5rem 0;
+    }
+  
+    .dataForm p input {
+        display: inline;
+    }
+}
+
+/*responsive screen layout*/
+@media only screen and (min-width: 1000px) {
+    #container {
+        width: 1000px;
+        margin: auto;
+    }
+}
+
+/*word box styling*/
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  grid-gap: 10px;
+  padding: 15px;
+}
+
+.word-box {
+  /*width: 40%;*/
+  margin-bottom: 0.25rem;
+  border: 1px solid rgba(189, 195, 199, 1.0);
+  color: rgba(44, 62, 80, 1.0);
+  background: #fff;
+}
+
+.word-box-heading {
+  padding: 0.5rem;
+}
+
+.word-box-image {
+  height: 250px;
+  overflow: hidden;
+  max-height: 100%;
+  padding: 10px;
+}
+
+.word-box-info {
+  padding: 0.5rem;
+  font-size: 5rem;
+}
+
+.word-box h3 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.word-box p {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.word-box a {
+  border: 1px solid tomato;
+  padding: 0.3rem;
+  text-align: right;
+}
+
+/*style for the category sorting*/
+.category-menu ul {
+  display: block;
+  position: relative;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  list-style-type: None;
+  font-size: 1em;
+  text-align: center;
+  justify-content: center;
+  background: #C1AAAA;
+  padding: 10px;
+}
+
+.category-menu li {
+  margin: 0 10px;
+}
+
+/*default flexbox style*/
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+  max-width: 50%;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-right: 20px;
+  background-color: #C1AAAA;
+  overflow-wrap: break-word;
+}  
+
+#search.flex-container {
+  justify-content: center;
+  align-items: center;
+}
+
+#search.flex-child {
+  justify-content: center;
+  max-width: 35%;
+  text-align: center;
+}
+
+#home.flex-child {
+  max-width: 100%;
+}
+
+/*flex box for the admin page*/
+#admin.flex-child {
+  flex: 1;
+  max-width: 50%;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-right: 20px;
+  background-color: #C1AAAA;
+}  
+
+/*text box for the admin page*/
+#admin.text{
+  text-align: left;
+  float: center;
+}
+
+/*styling for the more info page*/
+#more_info.flex-child {
+  max-width: 33.33%;
+  margin-right: 20px; 
+}
+
+#more_info.flex-child:last-child {
+  margin-right: 0px;
+}
+
+#more_info.text{
+  max-width:100%;
+  background-color: #C1AAAA;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#signup.myform{
+  background-color: #C1AAAA;
+  padding: 10px;
+}
+
+/*display for the category selection*/
+ul {
+ 	list-style-type: none;
+ 	margin: 0;
+ 	padding: 0;
+ 	overflow: hidden;
+ 	background-color: #333;
+}
+
+li {
+ 	float: left;
+}
+
+li a {
+ 	display: block;
+ 	color: black;
+ 	text-align: center;
+ 	padding: 10px 10px;
+	text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #A98989;
+}
