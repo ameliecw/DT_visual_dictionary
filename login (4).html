@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block pageheading %}Login page{% endblock %}
+
+{% block main %}
+<div class="text" id=login>
+  <form class = "myform" method = "POST" id="login">
+    <div class = "form-group">
+      <div class = "form-label"> Email: </div>
+      <div class = "form-element"><input type = "email" name = "email" id = "email" placeholder="email@example.com" required></div>
+    </div>
+    <div class = "form-group">
+      <div class = "form-label"> Password: </div>
+      <div class = "form-element"><input type = "password" name = "password" id = "password" placeholder="password" required></div>
+    </div>
+    <div class = "form-group">
+      <div class = "form-label"> </div>
+      <div class = "form-element"><input type = "submit" value = "Login"</div>
+    </div>
+  </form>
+      <p><br><br><br>If you don't yet have an account, please <a href ="/signup">sign up</a>.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block pageheading %}Words page{% endblock %}
+
+{% block main %}
+
+  <div class="category-menu">
+    <ul>
+      {% for category in categories %}
+      <li><a href="/words/{{ category[0] }}">{{ category[1].title() }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <br>
+  <div class="text">
+    <p>Use the navigation bar above to view the words by category, or use one of the filters below.</p>
+  </div>
+  <br>
+  <div class="flex-container" id="search_container">
+    <div class="flex-child search" id="search">
+      <form class="myform" method="post" action="/words">
+        <input type="text" name="search" id="search_box" required/>
+        <input type="submit" value="Search"/>
+      </form>
+    </div>
+
+    <div class="flex-child level" id="search_level">
+      <form class="myform" method="post" action="/levels">
+        <select id="level" name="level">
+          {% for level in levels %}
+            <option value="{{ level[0] }}">{{ level[0] }} </option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Search by level"/>
+      </form>
+    </div>
+  </div>
+    
+  <div class="words">
+    {% for word in words %}
+      <div class="word-box">
+        
+        <div class="word-box-image">
+          <img src="/static/images/{{ word[6] }}.jpg" alt="{{ word[8]}}" 
+            onerror="this.onerror=null;this.src='/static/images/image.jpg'"/>
+        </div>
+  
+        <div class="word-box-info">
+          <p><strong>English: </strong>{{ word[1].title() }}</p>
+          <p><strong>Māori: </strong>{{ word[2].title() }}</p>
+          <p><strong>Description: </strong>{{ word[3].capitalize() }}</p>
+        </div>
+        {% if is_teacher %}
+        <form class="button" action="/more_info/{{ word[0] }}">
+          <input type="submit" value="More Information"></input>
+        </form>
+        {% endif %}
+      </div>
+  {% endfor %}
+  </div>
+<div class="text", id="top_of_page">
+  <a href="#top_of_page">Return to the top of the page</a>
+</div>
+{% endblock %}
+

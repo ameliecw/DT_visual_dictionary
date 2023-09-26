@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Visual Dictionary | Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='style1.css') }}" rel="stylesheet">
+    <link href="/static/images/favicon.ico" rel="icon" type="image/x-icon">
+</head>
+  
+  
+<div class="container">
+    <header>
+        <h1 id="top_of_page">Māori to English Visual Dictionary</h1>
+        <h2>{% block pageheading %}{% endblock %}</h2>
+    </header>
+    <body>
+      <nav>
+          <div class="container">
+              <div class="nav" id="navbar">
+                <a href="/">Home</a>
+                <a href="/words/1">Translations</a>
+                {% if is_teacher %}
+                <a href="/admin">Admin</a>
+                {% endif %}
+                {% if logged_in %}
+                  <a href="/logout">Logout</a>
+                {% else %}
+                  <a href="/login">Login</a>
+                {% endif %}
+              </div>
+          </div>
+      </nav>
+      {% if not message == "" %}
+      <div class="text" id="words">
+        <p>{{ message }}</p>
+      </div>
+      {% endif %}
+    </body>
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+</div>
+</body>
+<footer>
+  <p>&copy Amelie C 2023</p>
+</footer>
+
+</html>

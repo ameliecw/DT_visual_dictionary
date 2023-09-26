@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block pageheading %}Admin page{% endblock %}
+
+{% block main %}
+<div class="flex-container">
+  <div class="flex-child words", id="admin">
+    <div class="text", id="admin">
+      <h3>Word Admin</h3>
+      <h4> Add a word</h4>
+      <form class="myform" method="post" action="/add_word">
+        <div class="form-group">
+          <div class="form-label"><label for="english">English Word:</label></div>
+          <div class="form-element"><input type="text" name="english" id="english" maxlength=85 required></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><label for="volume">Maori word:</label></div>
+          <div class="form-element"><input type="text" name="maori" id="maori" maxlength=85 required></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><label for="description">Word Description:</label></div>
+          <div class="form-element"><input type="text" name="description" id="description" maxlength=100 required></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><label for="image">Word image name:</label></div>
+          <div class="form-element"><input type="text" name="image" id="image" maxlength=256 required></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><label for="alt_text">Alt text:</label></div>
+          <div class="form-element"><input type="text" name="alt_text" id="alt_text" maxlength=100 required></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><label for="price">Level:</label></div>
+          <div class="form-element"><input type="number" name="level" id="level" min=1 max=10 required></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><label for="cat_id">Category:</label></div>
+          <div class="form-element">
+            <select id="cat_id" name="cat_id" required>
+              {% for category in categories %}
+                <option value="{{ category[0] }}">{{ category[1] }} </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"></div>
+          <div class="form-element"><input type="submit" value="Add Word"></div>
+        </div>
+      </form>
+    </div>
+
+    <div class="text", id="admin">
+      <h4> Delete a word </h4>
+      <form class ="myform" method="post" action="/delete_word">
+        <div class ="form-group">
+          <div class ="form-label"><label for="word_id">Word:</label></div>
+          <div class ="form-element">
+            <select id="word_id" name="word_id" >
+              {% for word in words %}
+                <option value ="{{ word[0] }}">{{ word[1] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      <div class ="form-group">
+        <div class ="form-label"></div>
+        <div class ="form-element" id="delete"><input type="submit" value ="Delete Word"></div>
+      </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="flex-child category", id="admin">
+    <div class="text", id="admin">
+      <h3> Category Admin </h3>
+      <h4> Add a category</h4>
+      <form class ="myform" method="post" action="/add_category">
+        <div class ="form-group">
+          <div class ="form-label"><label for="name">Category Name:</label></div>
+          <div class ="form-element"><input type="text" name="category" id="category" required></div>
+        </div>
+        <div class ="form-group">
+          <div class ="form-label"></div>
+          <div class ="form-element" id="add"><input type="submit" value ="Add Category"></div>
+        </div>
+      </form>
+      
+      <h4> Delete a category </h4>
+      <form class ="myform" method="post" action="/delete_category">
+        <div class ="form-group">
+          <div class ="form-label"><label for="category">Category Name:</label></div>
+          <div class ="form-element">
+            <select id="category_id" name="category_id">
+              {% for category in categories %}
+                <option value ="{{ category[0] }}, {{ category[1] }}">{{ category[1] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class ="form-group">
+          <div class ="form-label"></div>
+          <div class ="form-element" id="delete"><input type="submit" value ="Delete Category"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} 
